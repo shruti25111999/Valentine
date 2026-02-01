@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For Harshul 💖</title>
+
+  <!-- Aesthetic Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: linear-gradient(to bottom, #ffe6f0, #ffffff);
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      overflow-y: auto;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      color: #e60073;
+      margin-top: 40px;
+      font-size: 40px;
+    }
+
+    p {
+      font-size: 20px;
+      color: #555;
+      padding: 0 20px;
+    }
+
+    img {
+      width: 220px;
+      border-radius: 22px;
+      margin: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.18);
+    }
+
+    /* BUTTONS */
+    button {
+      font-size: 20px;
+      padding: 14px 32px;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    #yes {
+      background: linear-gradient(135deg, #ff5fa2, #ff85c1);
+      color: white;
+      margin: 20px;
+      box-shadow: 0 8px 18px rgba(255, 77, 136, 0.4);
+    }
+
+    #yes:hover {
+      transform: scale(1.08);
+    }
+
+    #no {
+      background-color: #f2f2f2;
+      color: #666;
+      position: absolute;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+    }
+
+    #finalMessage {
+      display: none;
+      font-size: 26px;
+      color: #ff1a75;
+      margin: 40px 20px 10px;
+      padding: 20px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* GLOWING I LOVE YOU TEXT */
+    #loveGlow {
+      display: none;
+      font-size: 36px;
+      margin: 20px 0 60px;
+      font-family: 'Playfair Display', serif;
+      color: #ff2f92;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #ff9acb, 0 0 10px #ff9acb;
+      }
+      to {
+        text-shadow: 0 0 15px #ff2f92, 0 0 30px #ff2f92;
+      }
+    }
+
+    /* HEARTS */
+    .heart {
+      position: fixed;
+      font-size: 26px;
+      pointer-events: none;
+      animation: float 6s linear forwards;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-100vh); opacity: 0; }
+    }
+
+    .burst {
+      animation: burst 1.2s ease-out forwards;
+    }
+
+    @keyframes burst {
+      0% { transform: scale(0); opacity: 1; }
+      100% { transform: scale(2.5); opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- MUSIC (plays on YES) -->
+  <audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <h1>Harshul, will you be my Valentine? 💘</h1>
+  <p>You are my favorite person, my safe place, my forever ❤️</p>
+
+  <img src="photo1.jpeg">
+  <img src="photo2.jpeg">
+
+  <br>
+
+  <button id="yes" onclick="showLove()">YES 💖</button>
+  <button id="no" onmouseover="moveNo()">NO 😅</button>
+
+  <div id="finalMessage">
+    YAYYYY 🥹❤️ <br><br>
+    Baby, I choose you today and every day.  
+    Thank you for loving me the way you do.  
+    Happy Valentine’s Day, my love 💕
+  </div>
+
+  <div id="loveGlow">
+    I love you sooooooooooo much bubu ❤️
+  </div>
+
+  <script>
+    function showLove() {
+      // Play music
+      document.getElementById("bgMusic").play();
+
+      // Show messages
+      document.getElementById("finalMessage").style.display = "block";
+      document.getElementById("loveGlow").style.display = "block";
+      document.getElementById("finalMessage").scrollIntoView({ behavior: "smooth" });
+
+      // Heart explosion
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart burst";
+        heart.innerHTML = "💖";
+        heart.style.left = "50%";
+        heart.style.top = "50%";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 1200);
+      }
+
+      // Heart shower
+      let shower = setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💘";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.bottom = "-20px";
+        heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+      }, 120);
+
+      setTimeout(() => clearInterval(shower), 4000);
+    }
+
+    function moveNo() {
+      const noBtn = document.getElementById("no");
+      noBtn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+      noBtn.style.top = Math.random() * (window.innerHeight - 50) + "px";
+    }
+  </script>
+
+</body>
+</html>
